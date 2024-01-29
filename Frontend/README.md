@@ -1,8 +1,37 @@
-# React + Vite
+# EmployeeKeeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EmployeeKeeper is a MERN stack project created to learn about the connectivity between the backend and frontend. The project allows users to perform basic CRUD operations on employee records.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Create Employee:** Add new employees with details like name, age, and email.
+- **View Employees:** Display a list of all added employees.
+- **Update Employee:** Modify the information of existing employees.
+- **Delete Employee:** Remove an employee from the system.
+
+## Technologies Used
+
+- **MongoDB:** NoSQL database for storing employee data.
+- **Express:** Backend framework for handling HTTP requests.
+- **React:** Frontend library for building the user interface.
+- **React Router DOM:** Declarative routing for React applications.
+- **Redux Toolkit:** State management library for React applications.
+- **Node.js:** JavaScript runtime for server-side development.
+
+## Getting Started
+
+Follow these steps to run the EmployeeKeeper project on your local machine:
+
+### Prerequisites
+
+- Node.js and npm installed on your machine.
+- MongoDB installed locally or accessible through a cloud-based service.
+
+### Setup
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/your-username/employeekeeper.git
+   cd employeekeeper
+   ```
