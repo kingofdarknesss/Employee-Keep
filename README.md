@@ -26,12 +26,3 @@ Follow these steps to run the EmployeeKeeper project on your local machine:
 
 - Node.js and npm installed on your machine.
 - MongoDB installed locally or accessible through a cloud-based service.
-
-### Setup
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/your-username/employeekeeper.git
-   cd employeekeeper
-   ```
