@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-const CreateEmployee = () => {
+import { useNavigate, useParams } from "react-router-dom";
+const Update = () => {
+  const { id } = useParams();
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [age, setAge] = useState(0);
-  const [err, setErr] = useState("");
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  useEffect(() => {
+    findUser();
+  }, []);
+
+  const findUser = async () => {
+    const responce = await fetch(`http://localhost:5000/api/v1/find/${id}`);
+    const data = await responce.json();
+
+    setAge(data.data.age);
+    setEmail(data.data.email);
+    setName(data.data.name);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const adduser = { name, email, age };
 
-    const responce = await fetch("http://localhost:5000/api/v1/create", {
-      method: "POST",
+    const responce = await fetch(`http://localhost:5000/api/v1/update/${id}`, {
+      method: "PUT",
       body: JSON.stringify(adduser),
       headers: {
         "Content-Type": "application/json",
@@ -24,23 +35,19 @@ const CreateEmployee = () => {
     const data = await responce.json();
 
     if (!responce.ok) {
-      setErr(data.massage);
+      console.log(data.massage);
     }
     if (responce.ok) {
-      console.log("user created sucessfully");
+      console.log("user updated sucessfully");
       setAge(0);
       setEmail("");
       setName("");
+      navigate("/");
     }
   };
 
   return (
-    <div>
-      {err ? (
-        <h1 className="m-auto text-center text-xl bg-indigo-500 text-white font-mono">
-          {err}
-        </h1>
-      ) : null}
+    <div className="pt-14">
       <form
         onSubmit={handleSubmit}
         className="text-gray-600 body-font relative"
@@ -69,7 +76,7 @@ const CreateEmployee = () => {
                     placeholder="Enter your name"
                     type="text"
                     id="name"
-                    name="name"
+                    // name="name"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -90,7 +97,7 @@ const CreateEmployee = () => {
                     }}
                     type="email"
                     id="email"
-                    name="email"
+                    // name="email"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
@@ -107,7 +114,7 @@ const CreateEmployee = () => {
                       setAge(e.target.value);
                     }}
                     id="age"
-                    name="age"
+                    // name="age"
                     type="number"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200  text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                   />
@@ -134,4 +141,4 @@ const CreateEmployee = () => {
   );
 };
 
-export default CreateEmployee;
+export default Update;
