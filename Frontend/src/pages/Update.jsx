@@ -11,7 +11,9 @@ const Update = () => {
   }, []);
 
   const findUser = async () => {
-    const responce = await fetch(`http://localhost:5000/api/v1/find/${id}`);
+    const responce = await fetch(
+      import.meta.env.VITE_BACKEND_URL + `api/v1/find/${id}`
+    );
     const data = await responce.json();
 
     setAge(data.data.age);

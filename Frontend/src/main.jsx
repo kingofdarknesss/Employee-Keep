@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import CreateEmployee from "./pages/CreateEmployee.jsx";
 import { Provider } from "react-redux";
-import Update from "./pages/update.jsx";
+import Update from "./pages/Update.jsx";
 import store from "./utils/AppStore.js";
 const router = createBrowserRouter([
   {

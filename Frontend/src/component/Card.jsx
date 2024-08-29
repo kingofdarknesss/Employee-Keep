@@ -8,7 +8,7 @@ function Card({ name, email, age, id }) {
   const handleDelete = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/v1/delete/${id}`,
+        import.meta.env.VITE_BACKEND_URL + `api/v1/delete/${id}`,
         {
           method: "DELETE",
           headers: {

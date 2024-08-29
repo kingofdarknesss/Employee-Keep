@@ -8,7 +8,7 @@ export const useFetchUser = () => {
   }, []);
 
   const fetchUser = async () => {
-    const response = await fetch("http://localhost:5000/api/v1/");
+    const response = await fetch(import.meta.env.VITE_BACKEND_URL + "api/v1/");
     const data = await response.json();
     dispatch(addAllUser(data.data));
   };

@@ -13,13 +13,16 @@ const CreateEmployee = () => {
 
     const adduser = { name, email, age };
 
-    const responce = await fetch("http://localhost:5000/api/v1/create", {
-      method: "POST",
-      body: JSON.stringify(adduser),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const responce = await fetch(
+      import.meta.env.VITE_BACKEND_URL + "api/v1/create",
+      {
+        method: "POST",
+        body: JSON.stringify(adduser),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const data = await responce.json();
 
