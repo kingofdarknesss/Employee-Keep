@@ -8,12 +8,6 @@ const app = express();
 
 DbConnection();
 
-app.use(
-  cors({
-    origin:http://18.191.117.210:5173,
-    credentials: true,
-  })
-);
 app.use(express.json());
 app.use("/api/v1", router);
 app.get("/", (req, res) => {
